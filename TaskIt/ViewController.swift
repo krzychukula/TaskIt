@@ -12,10 +12,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBOutlet weak var tableView: UITableView!
     
+    var taskArray:[[String:String]] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+
+        taskArray = [
+            ["task":"Study French", "subtask":"Verbs",   "date": "14/01/2014"],
+            ["task":"Eat Dinner",   "subtask":"Burgers", "date": "14/01/2014"],
+            ["task":"Gym",          "subtask":"Leg Day", "date": "14/01/2014"]
+        ]
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,15 +35,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     //UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return taskArray.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell:TaskCell = tableView.dequeueReusableCellWithIdentifier("myCell") as TaskCell
         
-        cell.taskLabel.text = "French"
-        cell.descriptionLabel.text = "Verbs in past and present"
-        cell.dateLabel.text = "01/10/2014"
+        let task = taskArray[indexPath.row]
+        
+        cell.taskLabel.text = task["task"]
+        cell.descriptionLabel.text = task["subtask"]
+        cell.dateLabel.text = task["date"]
         
         return cell
     }
