@@ -47,6 +47,11 @@
                                             </subviews>
                                             <color key="backgroundColor" red="1" green="1" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="IAg-U6-ast" id="gHa-GM-Owf"/>
+                                            <outlet property="descriptionLabel" destination="uta-ih-WOD" id="XOy-LE-pza"/>
+                                            <outlet property="taskLabel" destination="PyE-z0-iMu" id="dXi-H7-MYV"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
