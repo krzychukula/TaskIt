@@ -12,7 +12,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBOutlet weak var tableView: UITableView!
     
-    var taskArray:[[String:String]] = []
+    var taskArray:[TaskModel] = []
     
     
     override func viewDidLoad() {
@@ -21,9 +21,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
 
         taskArray = [
-            ["task":"Study French", "subtask":"Verbs",   "date": "14/01/2014"],
-            ["task":"Eat Dinner",   "subtask":"Burgers", "date": "14/01/2014"],
-            ["task":"Gym",          "subtask":"Leg Day", "date": "14/01/2014"]
+            TaskModel(task: "Study French", subTask: "Verbs", date: "14/01/2014"),
+            TaskModel(task: "Eat Dinner", subTask: "Soup", date: "22/12/2014"),
+            TaskModel(task: "Gym", subTask: "Leg Day", date: "22/12/2014")
         ]
         
     }
@@ -43,9 +43,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         let task = taskArray[indexPath.row]
         
-        cell.taskLabel.text = task["task"]
-        cell.descriptionLabel.text = task["subtask"]
-        cell.dateLabel.text = task["date"]
+        cell.taskLabel.text = task.task
+        cell.descriptionLabel.text = task.subTask
+        cell.dateLabel.text = task.date
         
         return cell
     }
