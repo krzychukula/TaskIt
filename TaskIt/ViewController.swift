@@ -30,6 +30,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell:TaskCell = tableView.dequeueReusableCellWithIdentifier("myCell") as TaskCell
+        
+        cell.taskLabel.text = "French"
+        cell.descriptionLabel.text = "Verbs in past and present"
+        cell.dateLabel.text = "01/10/2014"
+        
         return cell
     }
     
