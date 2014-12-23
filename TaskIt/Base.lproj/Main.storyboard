@@ -71,6 +71,24 @@
             </objects>
             <point key="canvasLocation" x="1075" y="305"/>
         </scene>
+        <!--Task Detail View Controller-->
+        <scene sceneID="oHo-XN-vVn">
+            <objects>
+                <viewController id="jKQ-CV-XYr" customClass="TaskDetailViewController" customModule="TaskIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qky-cg-UBD"/>
+                        <viewControllerLayoutGuide type="bottom" id="ipY-cn-BnH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Zrc-29-axn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="efm-Ap-Z0g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1866" y="305"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="JG1-PA-FD2">
             <objects>
