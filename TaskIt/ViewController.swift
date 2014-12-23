@@ -53,6 +53,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println(indexPath.section, indexPath.row)
+        
+        performSegueWithIdentifier("showTaskDetail", sender: self)
     }
 }
 
