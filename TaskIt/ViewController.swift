@@ -19,11 +19,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-
+        let date1 = Date.from(year: 2014, month: 12, day: 24)
+        
         taskArray = [
-            TaskModel(task: "Study French", subTask: "Verbs", date: "14/01/2014"),
-            TaskModel(task: "Eat Dinner", subTask: "Soup", date: "22/12/2014"),
-            TaskModel(task: "Gym", subTask: "Leg Day", date: "22/12/2014")
+            TaskModel(task: "Study French", subTask: "Verbs", date: date1),
+            TaskModel(task: "Eat Dinner",
+                subTask: "Soup",
+                date: Date.from(year: 2014, month: 12, day: 25)),
+            TaskModel(task: "Gym",
+                subTask: "Leg Day",
+                date: Date.from(year: 2014, month: 12, day: 26))
         ]
         
     }
