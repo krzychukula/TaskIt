@@ -23,6 +23,7 @@ class TaskDetailViewController: UIViewController {
         
         taskTextField.text = detailTaskModel.task
         subtaskTextField.text = detailTaskModel.subTask
+        dueDatePicker.date = detailTaskModel.date
     }
     
     override func didReceiveMemoryWarning() {
