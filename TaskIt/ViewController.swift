@@ -61,7 +61,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         cell.taskLabel.text = task.task
         cell.descriptionLabel.text = task.subTask
-        cell.dateLabel.text = task.date
+        cell.dateLabel.text = Date.toString(date: task.date)
         
         return cell
     }
