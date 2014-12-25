@@ -108,7 +108,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="Y3S-dw-eya">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="zGG-lA-UVW"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="zGG-lA-UVW">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="jKQ-CV-XYr" id="j4E-U0-cpn"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Done" id="YJJ-Q9-LBN"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
