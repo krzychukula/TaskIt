@@ -16,9 +16,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext!
     var fetchedResultsController:NSFetchedResultsController = NSFetchedResultsController()
     
-    var baseArray:[[TaskModel]] = []
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -62,16 +59,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     //UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return baseArray[section].count
+        return fetchedResultsController.sections![section].numberOfObjects
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell:TaskCell = tableView.dequeueReusableCellWithIdentifier("myCell") as TaskCell
         
-        let task = baseArray[indexPath.section][indexPath.row]
+        let task = fetchedResultsController.objectAtIndexPath(indexPath) as TaskModel
         
         cell.taskLabel.text = task.task
-        cell.descriptionLabel.text = task.subTask
+        cell.descriptionLabel.text = task.subtask
         cell.dateLabel.text = Date.toString(date: task.date)
         
         return cell
@@ -79,7 +76,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     //UITableViewDelegate
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return baseArray.count
+        return fetchedResultsController.sections!.count
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
