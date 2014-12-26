@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext!
+    var fetchedResultsController:NSFetchedResultsController = NSFetchedResultsController()
     
     var baseArray:[[TaskModel]] = []
     
@@ -19,23 +23,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let date1 = Date.from(year: 2014, month: 12, day: 24)
-        
-        let taskArray = [
-            TaskModel(task: "Study French", subTask: "Verbs", date: date1, completed: false),
-            TaskModel(task: "Eat Dinner",
-                subTask: "Soup",
-                date: Date.from(year: 2014, month: 12, day: 25),
-                completed: false),
-            TaskModel(task: "Gym",
-                subTask: "Leg Day",
-                date: Date.from(year: 2014, month: 12, day: 26),
-                completed: false)
-        ]
-        
-        var completedArray = [TaskModel(task: "Code", subTask: "Task Project", date: date1, completed: true)]
-        
-        baseArray = [taskArray, completedArray]
+        fetchedResultsController = getFetchedResultsController()
         
     }
 
@@ -133,6 +121,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         baseArray[indexPath.section].removeAtIndex(indexPath.row)
         tableView.reloadData()
+    }
+    
+    //Helper CoreData
+    
+    func taskFetchRequest() -> NSFetchRequest {
+        let fetchRequest = NSFetchRequest(entityName: "TaskModel")
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        return fetchRequest
+    }
+    
+    func getFetchedResultsController() -> NSFetchedResultsController {
+        var fetchedResultsController = NSFetchedResultsController(fetchRequest: taskFetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        return fetchedResultsController
     }
 }
 
