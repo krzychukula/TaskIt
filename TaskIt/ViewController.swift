@@ -82,16 +82,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.performSegueWithIdentifier("showTaskAdd", sender: self)
     }
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return baseArray.count
+    }
 
     //UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return baseArray[0].count
+        return baseArray[section].count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell:TaskCell = tableView.dequeueReusableCellWithIdentifier("myCell") as TaskCell
         
-        let task = baseArray[0][indexPath.row]
+        let task = baseArray[indexPath.section][indexPath.row]
         
         cell.taskLabel.text = task.task
         cell.descriptionLabel.text = task.subTask
