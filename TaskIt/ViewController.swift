@@ -40,13 +40,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         if segue.identifier == "showTaskDetail" {
             let detailVC = segue.destinationViewController as TaskDetailViewController
-            detailVC.mainVC = self
             let indexPath = self.tableView.indexPathForSelectedRow()
-            let thisTask = baseArray[indexPath!.section][indexPath!.row]
+            let thisTask = fetchedResultsController.objectAtIndexPath(indexPath!) as TaskModel
             detailVC.detailTaskModel = thisTask
         }else if segue.identifier == "showTaskAdd" {
             var addTaskVC = segue.destinationViewController as AddTaskViewController
-            addTaskVC.mainVC = self;
         }
         
     }
