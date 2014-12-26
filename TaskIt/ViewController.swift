@@ -12,7 +12,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBOutlet weak var tableView: UITableView!
     
-    var taskArray:[TaskModel] = []
+    var baseArray:[[TaskModel]] = []
     
     
     override func viewDidLoad() {
@@ -21,15 +21,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         let date1 = Date.from(year: 2014, month: 12, day: 24)
         
-        taskArray = [
-            TaskModel(task: "Study French", subTask: "Verbs", date: date1),
+        let taskArray = [
+            TaskModel(task: "Study French", subTask: "Verbs", date: date1, completed: false),
             TaskModel(task: "Eat Dinner",
                 subTask: "Soup",
-                date: Date.from(year: 2014, month: 12, day: 25)),
+                date: Date.from(year: 2014, month: 12, day: 25),
+                completed: false),
             TaskModel(task: "Gym",
                 subTask: "Leg Day",
-                date: Date.from(year: 2014, month: 12, day: 26))
+                date: Date.from(year: 2014, month: 12, day: 26),
+                completed: false)
         ]
+        
+        var completedArray = [TaskModel(task: "Code", subTask: "Task Project", date: date1, completed: true)]
+        
+        baseArray = [taskArray, completedArray]
         
     }
 
@@ -46,8 +52,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 //        }
 //        
 //        taskArray = taskArray.sorted(sortByDate)
+        let taskArray = baseArray[0]
         
-        taskArray = taskArray.sorted{
+        baseArray[0] = taskArray.sorted{
             (taskOne:TaskModel, taskTwo:TaskModel) -> Bool in
             
             return taskOne.date.timeIntervalSince1970 < taskTwo.date.timeIntervalSince1970
@@ -62,7 +69,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let detailVC = segue.destinationViewController as TaskDetailViewController
             detailVC.mainVC = self
             let indexPath = self.tableView.indexPathForSelectedRow()
-            let thisTask = taskArray[indexPath!.row]
+            let thisTask = baseArray[0][indexPath!.row]
             detailVC.detailTaskModel = thisTask
         }else if segue.identifier == "showTaskAdd" {
             var addTaskVC = segue.destinationViewController as AddTaskViewController
@@ -78,13 +85,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     //UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return taskArray.count
+        return baseArray[0].count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell:TaskCell = tableView.dequeueReusableCellWithIdentifier("myCell") as TaskCell
         
-        let task = taskArray[indexPath.row]
+        let task = baseArray[0][indexPath.row]
         
         cell.taskLabel.text = task.task
         cell.descriptionLabel.text = task.subTask
