@@ -122,11 +122,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         let thisTask = baseArray[indexPath.section][indexPath.row]
-        var newTask = TaskModel(task: thisTask.task, subTask: thisTask.subTask, date: thisTask.date, completed: true)
         
+        if indexPath.section == 0 {
+            var newTask = TaskModel(task: thisTask.task, subTask: thisTask.subTask, date: thisTask.date, completed: true)
+            baseArray[1].append(newTask)
+        }else {
+            var newTask = TaskModel(task: thisTask.task, subTask: thisTask.subTask, date: thisTask.date, completed: false)
+            
+            baseArray[0].append(newTask)
+        }
         baseArray[indexPath.section].removeAtIndex(indexPath.row)
-        baseArray[1].append(newTask)
-        
         tableView.reloadData()
     }
 }
