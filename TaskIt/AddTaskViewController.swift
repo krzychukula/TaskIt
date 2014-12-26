@@ -9,6 +9,12 @@
 import UIKit
 
 class AddTaskViewController: UIViewController {
+    
+    var mainVC:ViewController!
+    
+    @IBOutlet weak var taskTextField: UITextField!
+    @IBOutlet weak var subtaskTextField: UITextField!
+    @IBOutlet weak var dueDatePicker: UIDatePicker!
 
     override func viewDidLoad() {
         super.viewDidLoad()
