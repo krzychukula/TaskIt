@@ -14,7 +14,7 @@ class TaskDetailViewController: UIViewController {
     @IBOutlet weak var subtaskTextField: UITextField!
     @IBOutlet weak var dueDatePicker: UIDatePicker!
     
-    
+    var mainVC:ViewController!
     var detailTaskModel:TaskModel!
     
     override func viewDidLoad() {
