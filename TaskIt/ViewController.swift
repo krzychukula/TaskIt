@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -24,7 +24,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Do any additional setup after loading the view, typically from a nib.
         
         fetchedResultsController = getFetchedResultsController()
-        
+        fetchedResultsController.delegate = self
+        fetchedResultsController.performFetch(nil)
     }
 
     override func didReceiveMemoryWarning() {
