@@ -77,6 +77,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        if fetchedResultsController.sections?.count == 1 {
+            let fetchedObjects = fetchedResultsController.fetchedObjects!
+            let testTask:TaskModel = fetchedObjects[0] as! TaskModel
+            if testTask.completed == true {
+                return "Completed"
+            }else{
+                return "To do"
+            }
+        }
+        
         return section == 0 ? "To do" : "Completed"
     }
     
