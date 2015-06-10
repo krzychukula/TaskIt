@@ -100,10 +100,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         let thisTask = fetchedResultsController.objectAtIndexPath(indexPath) as! TaskModel
         
-        if indexPath.section == 0 {
-            thisTask.completed = true
-        }else {
+        if thisTask.completed == true {
             thisTask.completed = false
+        }else {
+            thisTask.completed = true
         }
         (UIApplication.sharedApplication().delegate as! AppDelegate).saveContext()
     }
