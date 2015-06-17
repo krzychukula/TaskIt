@@ -98,5 +98,17 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         
         return cell
     }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 30
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if tableView == self.capitalizeTableView {
+            return "Capitalize new Task?"
+        }else{
+            return "Complete new Task?"
+        }
+    }
 
 }
