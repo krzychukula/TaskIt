@@ -110,5 +110,26 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             return "Complete new Task?"
         }
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if tableView == self.capitalizeTableView {
+            if indexPath.row == 0 {
+                NSUserDefaults.standardUserDefaults().setBool(false, forKey: kShouldCapitalizeTaskKey)
+            }else{
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: kShouldCapitalizeTaskKey)
+            }
+        }else{
+            if indexPath.row == 0 {
+                NSUserDefaults.standardUserDefaults().setBool(false, forKey: kShouldCapitalizeNewTodoKey)
+            }else{
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: kShouldCapitalizeNewTodoKey)
+            }
+
+        }
+        
+        NSUserDefaults.standardUserDefaults().synchronize()
+        
+        tableView.reloadData()
+    }
 
 }
