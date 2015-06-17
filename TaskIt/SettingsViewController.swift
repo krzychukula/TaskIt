@@ -11,6 +11,8 @@ import UIKit
 class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     let kVersionNumber = "1.0"
+    let kShouldCapitalizeTaskKey = "shouldCapitalizeTask"
+    let kShouldCapitalizeNewTodoKey = "completeNewTodo"
 
     @IBOutlet weak var capitalizeTableView: UITableView!
     @IBOutlet weak var completeNewTodoTableView: UITableView!
@@ -48,14 +50,53 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     //UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 2
     }
     
-    // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
-    // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        
+        var cell: UITableViewCell
+        
+        if tableView == self.capitalizeTableView {
+            cell = tableView.dequeueReusableCellWithIdentifier("capitalizeCell") as! UITableViewCell
+            if indexPath.row == 0 {
+                cell.textLabel!.text = "No do not Capitalize"
+                if NSUserDefaults.standardUserDefaults().boolForKey(kShouldCapitalizeTaskKey) == false {
+                    cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+                }else{
+                    cell.accessoryType = UITableViewCellAccessoryType.None
+                }
+                
+            }else{
+                cell.textLabel?.text = "Yes Capitalize!"
+                
+                if NSUserDefaults.standardUserDefaults().boolForKey(kShouldCapitalizeTaskKey) == true {
+                    cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+                }else{
+                    cell.accessoryType = UITableViewCellAccessoryType.None
+                }
+            }
+        }else{
+            cell = tableView.dequeueReusableCellWithIdentifier("completeNewTodoCell") as! UITableViewCell
+            if indexPath.row == 0 {
+                cell.textLabel?.text = "Do not complete Task"
+                if NSUserDefaults.standardUserDefaults().boolForKey(kShouldCapitalizeNewTodoKey) == false {
+                    cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+                }else{
+                    cell.accessoryType = UITableViewCellAccessoryType.None
+                }
+            }else{
+                cell.textLabel?.text = "Complete Task"
+                if NSUserDefaults.standardUserDefaults().boolForKey(kShouldCapitalizeNewTodoKey) == true {
+                    cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+                }else{
+                    cell.accessoryType = UITableViewCellAccessoryType.None
+                }
+            }
+            
+        }
+        
+        return cell
     }
 
 }
