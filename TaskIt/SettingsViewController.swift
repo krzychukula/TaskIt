@@ -10,9 +10,7 @@ import UIKit
 
 class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    let kVersionNumber = "1.0"
-    let kShouldCapitalizeTaskKey = "shouldCapitalizeTask"
-    let kShouldCapitalizeNewTodoKey = "completeNewTodo"
+
 
     @IBOutlet weak var capitalizeTableView: UITableView!
     @IBOutlet weak var completeNewTodoTableView: UITableView!
@@ -80,14 +78,14 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             cell = tableView.dequeueReusableCellWithIdentifier("completeNewTodoCell") as! UITableViewCell
             if indexPath.row == 0 {
                 cell.textLabel?.text = "Do not complete Task"
-                if NSUserDefaults.standardUserDefaults().boolForKey(kShouldCapitalizeNewTodoKey) == false {
+                if NSUserDefaults.standardUserDefaults().boolForKey(kShouldCompleteNewTodoKey) == false {
                     cell.accessoryType = UITableViewCellAccessoryType.Checkmark
                 }else{
                     cell.accessoryType = UITableViewCellAccessoryType.None
                 }
             }else{
                 cell.textLabel?.text = "Complete Task"
-                if NSUserDefaults.standardUserDefaults().boolForKey(kShouldCapitalizeNewTodoKey) == true {
+                if NSUserDefaults.standardUserDefaults().boolForKey(kShouldCompleteNewTodoKey) == true {
                     cell.accessoryType = UITableViewCellAccessoryType.Checkmark
                 }else{
                     cell.accessoryType = UITableViewCellAccessoryType.None
@@ -120,9 +118,9 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         }else{
             if indexPath.row == 0 {
-                NSUserDefaults.standardUserDefaults().setBool(false, forKey: kShouldCapitalizeNewTodoKey)
+                NSUserDefaults.standardUserDefaults().setBool(false, forKey: kShouldCompleteNewTodoKey)
             }else{
-                NSUserDefaults.standardUserDefaults().setBool(true, forKey: kShouldCapitalizeNewTodoKey)
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: kShouldCompleteNewTodoKey)
             }
 
         }

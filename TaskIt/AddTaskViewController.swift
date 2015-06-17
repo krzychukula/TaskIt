@@ -39,10 +39,22 @@ class AddTaskViewController: UIViewController {
         let entityDescription = NSEntityDescription.entityForName("TaskModel", inManagedObjectContext: managedObjectContext!)
         let task = TaskModel(entity:entityDescription!, insertIntoManagedObjectContext:managedObjectContext!)
         
-        task.task = taskTextField.text
+        if NSUserDefaults.standardUserDefaults().boolForKey(kShouldCapitalizeTaskKey) {
+            task.task = taskTextField.text.capitalizedString
+        }else{
+            task.task = taskTextField.text
+        }
+        
+        
         task.subtask = subtaskTextField.text
-        task.completed = false
+
         task.date = dueDatePicker.date
+        
+        if NSUserDefaults.standardUserDefaults().boolForKey(kShouldCompleteNewTodoKey) {
+            task.completed = true
+        }else{
+            task.completed = false
+        }
         
         appDelegate.saveContext()
         

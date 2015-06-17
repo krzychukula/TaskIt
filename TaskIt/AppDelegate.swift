@@ -9,6 +9,10 @@
 import UIKit
 import CoreData
 
+let kVersionNumber = "1.0"
+let kShouldCapitalizeTaskKey = "shouldCapitalizeTask"
+let kShouldCompleteNewTodoKey = "completeNewTodo"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
