@@ -20,6 +20,7 @@
 		83B87EB11A4D7A7F005D9CE3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B87EB01A4D7A7F005D9CE3 /* CoreData.framework */; };
 		83B87EB41A4DCB03005D9CE3 /* TaskItModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 83B87EB21A4DCB03005D9CE3 /* TaskItModel.xcdatamodeld */; };
 		83B87EB61A4DCC38005D9CE3 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B87EB51A4DCC38005D9CE3 /* TaskModel.swift */; };
+		83BF70941B314B3700AD1A5F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BF70931B314B3700AD1A5F /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		83B87EB01A4D7A7F005D9CE3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		83B87EB31A4DCB03005D9CE3 /* TaskItModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskItModel.xcdatamodel; sourceTree = "<group>"; };
 		83B87EB51A4DCC38005D9CE3 /* TaskModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		83BF70931B314B3700AD1A5F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				838264FE1A46C9AB00A6CB0D /* ViewController.swift */,
 				838265201A49DD6700A6CB0D /* TaskDetailViewController.swift */,
 				83B87EAE1A4C11AF005D9CE3 /* AddTaskViewController.swift */,
+				83BF70931B314B3700AD1A5F /* SettingsViewController.swift */,
 				8382651C1A487E1D00A6CB0D /* TaskCell.swift */,
 				83B87EAC1A4AEB54005D9CE3 /* Date.swift */,
 				83B87EB51A4DCC38005D9CE3 /* TaskModel.swift */,
@@ -242,6 +245,7 @@
 				838265211A49DD6700A6CB0D /* TaskDetailViewController.swift in Sources */,
 				83B87EB61A4DCC38005D9CE3 /* TaskModel.swift in Sources */,
 				83B87EAF1A4C11AF005D9CE3 /* AddTaskViewController.swift in Sources */,
+				83BF70941B314B3700AD1A5F /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
