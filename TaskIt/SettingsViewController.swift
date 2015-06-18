@@ -35,6 +35,8 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         
         var doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("doneBarButtonItemPressed"))
         self.navigationItem.leftBarButtonItem = doneButton;
+        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Background")!)
     }
 
     override func didReceiveMemoryWarning() {

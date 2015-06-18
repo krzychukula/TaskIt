@@ -31,6 +31,8 @@ class TaskDetailViewController: UIViewController {
         taskTextField.text = detailTaskModel.task
         subtaskTextField.text = detailTaskModel.subtask
         dueDatePicker.date = detailTaskModel.date
+        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Background")!)
     }
     
     override func didReceiveMemoryWarning() {
