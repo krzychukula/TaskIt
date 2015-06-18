@@ -13,7 +13,8 @@ class ViewController: UIViewController,
     UITableViewDataSource,
     UITableViewDelegate,
     NSFetchedResultsControllerDelegate,
-    TaskDetailViewControllerDelegate {
+    TaskDetailViewControllerDelegate,
+    AddTaskViewControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -45,6 +46,7 @@ class ViewController: UIViewController,
             detailVC.delegate = self
         }else if segue.identifier == "showTaskAdd" {
             var addTaskVC = segue.destinationViewController as! AddTaskViewController
+            addTaskVC.delegate = self
         }
         
     }
@@ -140,8 +142,18 @@ class ViewController: UIViewController,
         showAlert()
     }
     
-    func showAlert(){
-        var alert = UIAlertController(title: "Change Made!", message: "Congratulations", preferredStyle: UIAlertControllerStyle.Alert)
+
+    
+    //AddTaskViewControllerDelegate
+    func addTaskCanceled(message: String) {
+        showAlert(message: message)
+    }
+    func addTask(message: String) {
+        showAlert(message: message)
+    }
+    
+    func showAlert(message: String = "Congratulations"){
+        var alert = UIAlertController(title: "Change Made!", message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Ok!", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
         
